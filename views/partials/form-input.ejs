@@ -1,0 +1,6 @@
+<div>
+  <label for="<%= id %>"><%= label %></label>
+  <input type="<%= type %>" id="<%= id %>" name="<%= name %>" placeholder=" <%=
+  placeholder || ''%>" <%= if (min !== undefined) { %>min="<%= min %>"<%= } %>
+  <% if (max !== undefined) { %>min="<%= min %>"<%= } %> />
+</div>
