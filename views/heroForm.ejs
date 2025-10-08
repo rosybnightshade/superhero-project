@@ -23,10 +23,13 @@
       <div>
         <form id="card-body">
           <!--include ejs partials-->
-          <%- include('partials/form-input', heroFields.superName) %>
-          <%- include('partials/form-input', heroFields.realName) %>
-          <%- include('partials/form-input', heroFields.superpower) %>
-          <%- include('partials/form-input', heroFields.powerLevel) %>
+          <%- include('partials/form-input', input.superName) %>
+          <%- include('partials/form-input', input.realName) %>
+          <%- include('partials/form-input', input.superPower) %>
+          <%- include('partials/form-input', input.powerLevel) %>
+          
+          
+          
 
           <div class="form-check">
             <input type="checkbox" name="secretIdentity" id="secretIdentity" />

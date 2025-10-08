@@ -1,7 +1,9 @@
 <div>
   <label for="<%= id %>"><%= label %></label>
-  <input type="<%= type %>" id="<%= id %>" name="<%= name %>" placeholder=" <%=
+  <input type="<%= type %>" id="<%= id %>" name="<%= name %>" 
+  placeholder="<%= placeholder %>"
   <% if (typeof min !== 'undefined') { %>min="<%= min %>"<% } %>
   <% if (typeof max !== 'undefined') { %>max="<%= max %>"<% } %>
   <% if (required) { %>required<% } %>
+  />
 </div>

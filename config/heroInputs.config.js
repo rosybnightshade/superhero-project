@@ -18,10 +18,10 @@ module.exports =
         placeholder: 'e.g., Clark Kent'
     },
 
-    superpower: {
-        id: 'superpower',
-        name: 'superpower',
-        label: 'Superpower',
+    superPower: {
+        id: 'superPower',
+        name: 'superPower',
+        label: 'Super Power',
         type: 'text',
         required: true,
         placeholder: 'e.g., Flying'
@@ -33,6 +33,7 @@ module.exports =
         label: 'Power Level',
         type: 'number',
         required: true,
+        placeholder: "Enter power level",
         min: 1,
         max: 10
     },
