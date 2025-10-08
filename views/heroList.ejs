@@ -14,11 +14,13 @@
     </h1>
    </div>
 
+
+
 <% if (heroes && heroes.length > 0){ %>
 <div class="row">
-}
+
 <% heroes.forEach(function(hero)){%>
-    <div class="col-md-6 col-lg-4" id="hero-<%= hero.id"%>">
+    <div class="col-md-6 col-lg-4" id="hero-<%=hero.id%>">
         <div class = "card h-100 shadow-sm">
             <div class="card-body">
             <!--display-->
@@ -30,9 +32,9 @@
                 </h5>
                 <p class="card-text">
                     <strong>Real Name:</strong><%=hero.realName%><br>
-                    <strong>Power:</strong><% hero.superpower%><br>
+                    <strong>Power:</strong><%=hero.superPower%><br>
                     <strong>Level</strong>
-                    <span class="badge bg-warning text-dark"><%hero.powerLevel%>/10</span>
+                    <span class="badge bg-warning text-dark"><%=hero.powerLevel%>/10</span>
                     <strong>Secret Identity</strong>
                     <% if (hero.secretIdentity) { %>
                         <i class="bi bi-lock-fill text-danger"></i>Yes
@@ -48,9 +50,46 @@
                         <i class="bi bi-trash"></i> Delete
                     </button>
 
-                </div>
             </div>
-            <div class="hero-edit" id="edit-<%=hero.id%>" style="display:none;"
+        <!---->
+            <div class="hero-edit" id="edit-<%=hero.id%>" style="display:none;">
+                <input type="text" class ="form-control mb-2" id="superName<%=hero.supername%>" value="<%=hero.superName%>" placeholder="Super Hero Name">
+                <input type="text" class ="form-control mb-2" id="superName<%=hero.realName%>" value="<%=hero.realName%>" placeholder="Real Name">
+                <input type="text" class ="form-control mb-2" id="superName<%=hero.superPower%>" value="<%=hero.superpower%>" placeholder="Super Power">
+                <input type="text" class ="form-control mb-2" id="superName<%=hero.powerLevel%>" value="<%=hero.powerLevel%>" placeholder="Power Level">
+            </div>
+            <div class="form-check mb-2">
+                <input type="checkbox" class="form-check-input" id="secretIdentity-<%=hero.id%>" <%=hero.secretIdentity ? 'checked': '' %>>
+                <label class="from-check-label" for="secretIdentity-<%=hero.id%> ">secret Identity</label>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-success" onclick="updateHero('<%=hero.id>')"><i class="bi bi-check"></i>Save</button>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-success" onclick="cancelEdit('<%=hero.id>')"><i class="bi bi-x"></i>Save</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <% }%>
+            <%}%>
+</div>
+<%else%>
+<div class="alert alert-info text-center">no herors in the list</div>
+
 
 
 
