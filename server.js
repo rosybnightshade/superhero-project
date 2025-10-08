@@ -22,7 +22,7 @@ app.set("view engine", "ejs");
 
 app.post("/heroes", async (req, res) => {
   try {
-    const result = await db
+    const result = await DB
       .collection(`${process.env.MONGO_COLLECTION}`)
       .insertOne(req.body);
 
@@ -38,21 +38,38 @@ app.post("/heroes", async (req, res) => {
 
 app.get("/heroes", async (req, res) => {
   try {
-    const data = await db
+    const data = await DB
       .collection(`${process.env.MONGO_COLLECTION}`)
       .find({})
       .toArray();
-    if (req.accepts("html")) {
-      res.render("NEW HEROS!!", { superheros: data });
-    } else {
+    // if (req.accepts("html")) {
+    //   res.render("heroList", { superheros: data });
+    // } else {
       res.json({
         success: true,
         count: data.length,
         data,
       });
-    }
+    // }
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });
-app.listen(PORT);
+
+app.delete("/heroes", async (req, res) => {
+  try {
+    const result = await DB.collection(
+      `${process.env.MONGO_COLLECTION}`
+    ).deleteOne({});
+    res.json({
+      success: true,
+      message: `Deleted successfully`,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.listen(3000, () => {
+  console.log(`App is listening on 3000`);
+});

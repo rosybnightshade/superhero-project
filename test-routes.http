@@ -1,0 +1,26 @@
+### POST ROUTE
+POST http://localhost:3000/heroes
+Content-Type: application/json
+
+{
+    "superheroName" : "Superman",
+    "realName" : "IDK",
+    "superpower" : "Strong",
+    "powerLevel" : "10",
+    "secretIdentity" : "No Clue"
+}
+
+### GET ROUTE
+GET http://localhost:3000/heroes
+
+### DELETE ROUTE
+DELETE http://localhost:3000/heroes
+Content-Type: application/json
+
+{
+    "superheroName" : "Superman",
+    "realName" : "IDK",
+    "superpower" : "Strong",
+    "powerLevel" : "10",
+    "secretIdentity" : "No Clue"
+}
