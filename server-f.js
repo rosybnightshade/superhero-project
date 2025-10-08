@@ -7,6 +7,8 @@ app.listen(3000, () => {
   console.log("server is listening");
 });
 
-app.get("/heroForm", (req, res) => {
-  res.render("heroForm");
+const heroFields = require("./config/heroInputs.config.js");
+app.get("/", (req, res) => {
+  // This spreads superName, realName, etc. as individual variables
+  res.render("heroForm", heroFields);
 });
