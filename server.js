@@ -56,11 +56,11 @@ app.get("/heroes", async (req, res) => {
   }
 });
 
-app.delete("/heroes", async (req, res) => {
+app.delete("/heroes/:id", async (req, res) => {
   try {
     const result = await DB.collection(
       `${process.env.MONGO_COLLECTION}`
-    ).deleteOne({});
+    ).deleteOne({id:req.params.id});
     res.json({
       success: true,
       message: `Deleted successfully`,

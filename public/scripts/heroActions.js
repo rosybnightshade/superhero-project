@@ -1,18 +1,19 @@
 function editHero(id) {
-    document.getElementById('display-${id}').style.display = 'none';
-    document.getElementById('edit-${id}').style.display = 'block';
+    console.log("edit")
+    document.getElementById(`display-${id}`).style.display = 'none';
+    document.getElementById(`edit-${id}`).style.display = 'block';
 
 }
 function cancelEdit(id) {
-    document.getElementById('display-${id}').style.display = 'block'
-    document.getElementById('edit-${id}').style.display = 'none'
+    document.getElementById(`display-${id}`).style.display = 'block'
+    document.getElementById(`edit-${id}`).style.display = 'none'
 }
 async function updateHero(id) {
-    const superName = document.getElementById('superName-${id}').value 
-    const realName = document.getElementById('realName-${id}').value 
-    const superpower = document.getElementById('superpower-${id}').value
-    const powerLevel = document.getElementById('powerLevel-${id}').value
-    const secretIdentity = document.getElementById('secretIdentity-${id}').checked
+    const superName = document.getElementById(`superName-${id}`).value 
+    const realName = document.getElementById(`realName-${id}`).value 
+    const superpower = document.getElementById(`superpower-${id}`).value
+    const powerLevel = document.getElementById(`powerLevel-${id}`).value
+    const secretIdentity = document.getElementById(`secretIdentity-${id}`).checked
     if (!superName.trim() || !realName.trim() || !superpower.trim()) {
     alert('Please fill in all required fields');
     return
@@ -41,7 +42,7 @@ async function deleteHero(id) {
     }
     try {
         const response = await fetch(`/heroes/${id}`, {
-            method: DELETE
+            method: "DELETE"
 
         })
         if (response.ok) {
