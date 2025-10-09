@@ -22,9 +22,10 @@ app.set("view engine", "ejs");
 
 app.post("/heroes", async (req, res) => {
   try {
-    const result = await DB
-      .collection(`${process.env.MONGO_COLLECTION}`)
-      .insertOne(req.body);
+    const result = await DB.collection(
+      `${process.env.MONGO_COLLECTION}`
+    ).insertOne(req.body);
+    
 
     res.status(201).json({
       success: true,
@@ -38,19 +39,18 @@ app.post("/heroes", async (req, res) => {
 
 app.get("/heroes", async (req, res) => {
   try {
-    const data = await DB
-      .collection(`${process.env.MONGO_COLLECTION}`)
+    const data = await DB.collection(`${process.env.MONGO_COLLECTION}`)
       .find({})
       .toArray();
-    // if (req.accepts("html")) {
-    //   res.render("heroList", { superheros: data });
-    // } else {
+    if (req.accepts("html")) {
+      res.render("heroList", { superheros: data });
+    } else {
       res.json({
         success: true,
         count: data.length,
         data,
       });
-    // }
+    }
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -70,12 +70,12 @@ app.delete("/heroes", async (req, res) => {
   }
 });
 
+
 app.get("/heroForm", (req, res) => {
   const heroFields = require("./config/heroInputs.config.js");
   // This spreads superName, realName, etc. as individual variables
   res.render("heroForm", { input: heroFields });
 });
-
 
 app.listen(3000, () => {
   console.log(`App is listening on 3000`);

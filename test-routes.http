@@ -6,8 +6,8 @@ Content-Type: application/json
     "superheroName" : "Superman",
     "realName" : "IDK",
     "superpower" : "Strong",
-    "powerLevel" : "10",
-    "secretIdentity" : "No Clue"
+    "powerLevel" : 10,
+    "secretIdentity" : true
 }
 
 ### GET ROUTE
