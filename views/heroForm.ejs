@@ -21,7 +21,7 @@
         <h1>Form - Add Superhero</h1>
       </div>
       <div>
-        <form action="" id="hero-form">
+        <form id="hero-form">
           <!--include ejs partials-->
           <%- include('partials/form-input', input.superName) %>
           <%- include('partials/form-input', input.realName) %>
@@ -50,4 +50,44 @@
       </div>
     </div>
   </body>
+  <!-- <script type="script" src="..\public\scripts\validation.js"></script> -->
+   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("hero-form");
+  if (!form) return;
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const submitData = {};
+
+    for (const [key, value] of formData.entries()) {
+      if (value.trim()) {
+        submitData[key] = value.trim();
+      }
+    }
+
+    submitData.secretIdentity =
+      document.getElementById("secretIdentity").checked;
+
+    try {
+      const response = await fetch("/heroes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submitData),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        window.location.href = data.redirectTo;
+      } else {
+        alert("Error: " + data.error);
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Failed to add hero");
+    }
+  });
+});
+</script>
 </html>
