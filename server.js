@@ -70,6 +70,13 @@ app.delete("/heroes", async (req, res) => {
   }
 });
 
+app.get("/heroForm", (req, res) => {
+  const heroFields = require("./config/heroInputs.config.js");
+  // This spreads superName, realName, etc. as individual variables
+  res.render("heroForm", { input: heroFields });
+});
+
+
 app.listen(3000, () => {
   console.log(`App is listening on 3000`);
 });
