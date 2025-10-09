@@ -43,7 +43,7 @@ app.get("/heroes", async (req, res) => {
       .find({})
       .toArray();
     if (req.accepts("html")) {
-      res.render("heroList", { superheros: data });
+      res.render("heroList", {heroes: data });
     } else {
       res.json({
         success: true,
